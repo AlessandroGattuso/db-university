@@ -1,0 +1,12 @@
+1)
+
+SELECT `S`.*
+FROM `students` AS `S` JOIN `degrees` AS `D` ON `D`.`id` = `S`.`degree_id`
+WHERE `D`.`name` LIKE '%Laurea in Economia%'
+
+
+2)
+
+SELECT `Deg`.*
+FROM `departments` AS `Dep` JOIN `degrees` AS `Deg` ON `Dep`.`id` = `Deg`.`department_id`
+WHERE `Deg`.`level`='magistrale' AND `Dep`.`name` LIKE '%Neuroscienze%'
