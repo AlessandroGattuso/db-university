@@ -10,3 +10,43 @@ WHERE `D`.`name` LIKE '%Laurea in Economia%'
 SELECT `Deg`.*
 FROM `departments` AS `Dep` JOIN `degrees` AS `Deg` ON `Dep`.`id` = `Deg`.`department_id`
 WHERE `Deg`.`level`='magistrale' AND `Dep`.`name` LIKE '%Neuroscienze%'
+
+
+3)
+
+SELECT `C`.*
+FROM `teachers` AS `T` 
+JOIN `course_teacher` AS `TC` ON `T`.`id` = `TC`.`teacher_id`
+JOIN `courses` AS `C` ON `C`.`id` = `TC`.`course_id`
+WHERE `T`.`id`=44
+
+
+4)
+
+SELECT `S`.*,`Deg`.*,`Dep`.`name`
+FROM `students` AS `S` 
+JOIN `degrees` AS `Deg` ON `Deg`.`id` = `S`.`degree_id`
+JOIN `departments` AS `Dep` ON `Dep`.`id` = `Deg`.`department_id`
+
+
+5)
+
+SELECT `D`.`name`,`C`.`name`,`T`.`name`
+FROM `degrees` AS `D`
+JOIN `courses` AS `C` ON `D`.`id` = `C`.`degree_id`
+JOIN `course_teacher` AS `TC` ON `C`.`id` = `TC`.`course_id`
+JOIN `teachers` AS `T` ON `T`.`id` = `TC`.`teacher_id`
+
+
+6)
+
+SELECT `Dep`.`name`,`T`.`name`,`T`.`surname`
+FROM `departments` AS `Dep`
+JOIN `degrees` AS `Deg` ON `Dep`.`id` = `Deg`.`department_id`
+JOIN `courses` AS `C` ON `Deg`.`id` = `C`.`degree_id`
+JOIN `course_teacher` AS `TC` ON `C`.`id` = `TC`.`course_id`
+JOIN `teachers` AS `T` ON `T`.`id` = `TC`.`teacher_id`
+WHERE `Dep`.`name`='Dipartimento di Matematica'
+
+
+
