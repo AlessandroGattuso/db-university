@@ -51,7 +51,7 @@ WHERE `Dep`.`name`='Dipartimento di Matematica'
 
 7)
 
-SELECT `S`.`name`, `S`.`surname`,`C`.`name` ,`E`.`date`, COUNT(*) AS `Tentativi`
+SELECT `S`.`name`, `S`.`surname`,`C`.`name` AS `corso`, `E`.`date`, COUNT(*) AS `tentativi`
 FROM `exam_student` AS `ES` 
 JOIN `students` AS `S` ON `S`.`id` = `ES`.`student_id`
 JOIN `exams` AS `E` ON `E`.`id` = `ES`.`exam_id`
