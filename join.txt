@@ -40,23 +40,23 @@ JOIN `teachers` AS `T` ON `T`.`id` = `TC`.`teacher_id`
 
 6)
 
-SELECT `Dep`.`name`,`T`.`name`,`T`.`surname`
-FROM `departments` AS `Dep`
-JOIN `degrees` AS `Deg` ON `Dep`.`id` = `Deg`.`department_id`
-JOIN `courses` AS `C` ON `Deg`.`id` = `C`.`degree_id`
-JOIN `course_teacher` AS `TC` ON `C`.`id` = `TC`.`course_id`
-JOIN `teachers` AS `T` ON `T`.`id` = `TC`.`teacher_id`
-WHERE `Dep`.`name`='Dipartimento di Matematica'
+SELECT DISTINCT `T`.`name` AS `nome_ins`,`T`.`surname` AS `cognome_ins`, `Dep`.`name` AS `dipartimento`
+FROM `teachers` AS `T`
+JOIN `course_teacher` AS `TC` ON `T`.`id` = `TC`.`teacher_id`
+JOIN `courses` AS `C` ON `C`.`id` = `TC`.`course_id`
+JOIN `degrees` AS `Deg` ON `Deg`.`id` = `C`.`degree_id`
+JOIN `departments` AS `Dep` ON `Dep`.`id` = `Deg`.`department_id`
+WHERE `Dep`.`name`='Dipartimento di Matematica'  
 
 
 7)
 
-SELECT `S`.`name`, `S`.`surname`,`C`.`name` AS `corso`, `E`.`date`, COUNT(*) AS `tentativi`
+SELECT `S`.`name`, `S`.`surname`,`C`.`name` AS `corso`, COUNT(*) AS `tentativi`
 FROM `exam_student` AS `ES` 
 JOIN `students` AS `S` ON `S`.`id` = `ES`.`student_id`
 JOIN `exams` AS `E` ON `E`.`id` = `ES`.`exam_id`
 JOIN `courses` AS `C` ON `C`.`id` = `E`.`course_id`
-GROUP BY `E`.`course_id`,`S`.`name`, `S`.`surname`, `C`.`name`, `E`.`date`
+GROUP BY `S`.`id`, `E`.`course_id`  
 ORDER BY `S`.`name` ASC, `S`.`surname` ASC;
 
 
