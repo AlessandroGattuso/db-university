@@ -40,7 +40,7 @@ JOIN `teachers` AS `T` ON `T`.`id` = `TC`.`teacher_id`
 
 6)
 
-SELECT DISTINCT `T`.`name` AS `nome_ins`,`T`.`surname` AS `cognome_ins`, `Dep`.`name` AS `dipartimento`
+SELECT DISTINCT `T`.*
 FROM `teachers` AS `T`
 JOIN `course_teacher` AS `TC` ON `T`.`id` = `TC`.`teacher_id`
 JOIN `courses` AS `C` ON `C`.`id` = `TC`.`course_id`
