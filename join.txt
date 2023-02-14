@@ -58,3 +58,5 @@ JOIN `exams` AS `E` ON `E`.`id` = `ES`.`exam_id`
 JOIN `courses` AS `C` ON `C`.`id` = `E`.`course_id`
 GROUP BY `E`.`course_id`,`S`.`name`, `S`.`surname`, `C`.`name`, `E`.`date`
 ORDER BY `S`.`name` ASC, `S`.`surname` ASC;
+
+
